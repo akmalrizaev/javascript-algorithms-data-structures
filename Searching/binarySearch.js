@@ -1,5 +1,9 @@
 // Binary search is an efficient algorithm for finding an item from a sorted list of items
 
+// Big O:
+//  Worst and Average Case - O(log n)
+//  Best Case - O(1)
+
 function binarySearch(arr, elem) {
   var start = 0;
   var end = arr.length - 1;
