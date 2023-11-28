@@ -49,3 +49,17 @@ LinkedList.prototype.search = function (searchValue) {
   }
   return null;
 };
+
+LinkedList.prototype.indexOf = function (value) {
+  var indexes = [];
+  var currentIndex = 0;
+  var currentNode = this.head;
+  while (currentNode) {
+    if (currentNode.value === value) {
+      indexes.push(currentIndex);
+    }
+    currentNode = currentNode.next;
+    currentIndex++;
+  }
+  return indexes;
+};
