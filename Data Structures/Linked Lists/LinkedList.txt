@@ -1,0 +1,7 @@
+Constant Time - O(1):
+ - Adding/removing head 
+ - Adding/removing tail 
+
+Searching through Linked List:
+ - Linear time complexity
+ - O(n)
