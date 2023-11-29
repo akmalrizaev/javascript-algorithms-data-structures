@@ -34,7 +34,8 @@ BST.prototype.depthFirstTraversal = function (iteratorFunc, order) {
   if (order === 'post-order') iteratorFunc(this.value);
 };
 
-BST.prototype.breadFirstTraversal = function (iteratorFunc) {
+// Breadth First Traversal
+BST.prototype.breadthFirstTraversal = function (iteratorFunc) {
   var queue = [this];
   while (queue.length) {
     var treeNode = queue.shift();
@@ -42,6 +43,16 @@ BST.prototype.breadFirstTraversal = function (iteratorFunc) {
     if (treeNode.left) queue.push(treeNode.left);
     if (treeNode.right) queue.push(treeNode.right);
   }
+};
+
+BST.prototype.getMinVal = function () {
+  if (this.left) return this.left.getMinVal();
+  else return this.value;
+};
+
+BST.prototype.getMaxVal = function () {
+  if (this.right) return this.right.getMaxVal();
+  else return this.value;
 };
 
 var bst = new BST(50);
@@ -62,7 +73,7 @@ bst.depthFirstTraversal(log, 'in-order');
 bst.depthFirstTraversal(log, 'pre-order');
 bst.depthFirstTraversal(log, 'post-order');
 
-bst.breadFirstTraversal(log_bft);
+bst.breadthFirstTraversal(log_bft);
 
 function log(value) {
   console.log(value);
@@ -71,3 +82,6 @@ function log(value) {
 function log_bft(node) {
   console.log(node.value);
 }
+
+console.log('MIN: ', bst.getMinVal());
+console.log('MAX: ', bst.getMaxVal());
