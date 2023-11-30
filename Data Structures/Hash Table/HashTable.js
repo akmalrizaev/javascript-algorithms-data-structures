@@ -36,6 +36,31 @@ HashTable.prototype.insert = function (key, value) {
   }
 };
 
+HashTable.prototype.get = function (key) {
+  var index = this.hash(key);
+  if (!this.buckets[index]) return null;
+  else {
+    var currentNode = this.buckets[index];
+    while (currentNode) {
+      if (currentNode.key === key) return currentNode.value;
+      currentNode = currentNode.next;
+    }
+    return null;
+  }
+};
+
+HashTable.prototype.retrieveAll = function () {
+  var allNodes = [];
+  for (var i = 0; i < this.numBuckets; i++) {
+    var currentNode = this.buckets[i];
+    while (currentNode) {
+      allNodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+  }
+  return allNodes;
+};
+
 var myHT = new HashTable(30);
 console.log(myHT);
 
@@ -44,3 +69,7 @@ console.log(myHT.hash('Becca'));
 myHT.insert('Dean', 'dean@gmail.com');
 myHT.insert('Megan', 'megan@gmail.com');
 console.log(myHT.buckets);
+
+console.log(myHT.get('Dean'));
+
+console.log(myHT.retrieveAll());
